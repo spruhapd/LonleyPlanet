@@ -7,19 +7,19 @@ import java.util.Map;
 
 public class Taxonomy {
 
-	private String name;
+	private String taxName;
 	private List<Node> nodes = new ArrayList<Node>();
 	private Map<String, Node> dictionary = new HashMap<String, Node>();
 
-	public String getName() {
-		return name;
+	public String getTaxName() {
+		return taxName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setTaxName(String taxName) {
+		this.taxName = taxName;
 	}
 
-	public List<Node> getNodes() {
+		public List<Node> getNodes() {
 		return nodes;
 	}
 
@@ -66,7 +66,7 @@ public class Taxonomy {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder().append("Taxonomy(name=")
-		    .append(name).append(",nodes=[");
+		    .append(taxName).append(",nodes=[");
 		for (Node node : nodes) {
 			sb.append(node).append(",\n");
 		}

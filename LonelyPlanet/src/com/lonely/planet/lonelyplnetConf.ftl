@@ -20,10 +20,10 @@
             <div class="content">
               <div class="inner">
               <ul class="navigation">
-<#list children as child>
-<li><a href="${child.nodeId}.html">${child.name}</a></li>
-</#list>
-							</ul>
+					<#list children as child>
+					<li><a href="${child.nodeId}.html">${child.name}</a></li>
+					</#list>
+			   </ul>
               </div>
             </div>
           </div>
@@ -33,10 +33,10 @@
           <div class="block">
             <div class="secondary-navigation">
               <ul>
-<#list ancestors as ancestor>
-<li class="first"><a href="${ancestor.nodeId}.html">${ancestor.name}</a></li>
-</#list>
-                <li class="first"><a href="#">${destination.title}</a></li>
+					<#list ancestors as ancestor>
+					<li class="first"><a href="${ancestor.nodeId}.html">${ancestor.name}</a></li>
+					</#list>
+					<li class="first"><a href="#">${destination.title}</a></li>
               </ul>
               <div class="clear"></div>
             </div>

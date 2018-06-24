@@ -17,28 +17,19 @@ public class DestinationParser implements ElementParser<Destination> {
 
 	@Override
 	public Destination parseElement(Element ele) {
-		Destination d = new Destination();
+		Destination dest = new Destination();
 		try {
-			d.setAtlasId(ele.attributeValue("atlas_id"));
-			d.setAssetId(ele.attributeValue("asset_id"));
-			d.setTitle(ele.attributeValue("title"));
-			d.setTitleAscii(ele.attributeValue("title-ascii"));
-			parseInfo(ele, d.getInfo());
-			// if ("Africa".equals(d.getTitle())) throw new
-			// GenericException("test parse exception!");
+			dest.setAtlasId(ele.attributeValue("atlas_id"));
+			dest.setAssetId(ele.attributeValue("asset_id"));
+			dest.setTitle(ele.attributeValue("title"));
+			dest.setTitleAscii(ele.attributeValue("title-ascii"));
+			parseInfo(ele, dest.getInfo());
 		} catch (Exception e) {
-			logger.error("parse exception {} on element\n{}", e, ele.asXML());
+			logger.error("Parse exception" +e.getMessage());
 		}
-		return d;
+		return dest;
 	}
 
-	/**
-	 * recursively parse other information as a map
-	 * 
-	 * @param e
-	 * @param info
-	 * @return
-	 */
 	protected Object parseInfo(Element e, Map<String, Object> info) {
 		String name = e.getName();
 		if (e.isTextOnly()) {

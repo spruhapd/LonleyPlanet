@@ -3,13 +3,8 @@ package com.lonely.planet;
 import org.dom4j.Element;
 import org.dom4j.ElementHandler;
 import org.dom4j.ElementPath;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class DestinationHandler implements ElementHandler {
-
-	private static final Logger logger = LoggerFactory
-	    .getLogger(DestinationHandler.class);
 
 	private ElementParser<Destination> parser;
 	private Renderer<Destination> renderer;
@@ -28,7 +23,7 @@ public class DestinationHandler implements ElementHandler {
 			Destination d = parser.parseElement(node);
 			renderer.render(d);
 		} catch (Exception e) {
-			logger.error("element {}@{} handler exception {}", node, path, e);
+			e.printStackTrace();
 		} finally {
 			node.detach();
 		}

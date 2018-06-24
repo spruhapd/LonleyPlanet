@@ -52,44 +52,36 @@ public class Destination {
 		this.info = info;
 	}
 
-	/**
-	 * lookup content in info map and transfer it to html format \n -> <br>
-	 * etc.
-	 * 
-	 * @param path
-	 * @return
-	 */
+	
 	public String html(String path) {
 		String s = lookup(path);
 		return s == null ? null : s.replaceAll("\n", "<br>");
 	}
 
-	/**
-	 * lookup content in info map
-	 * 
-	 * @param path
-	 * @return
-	 */
 	public String lookup(String path) {
-		String[] ss = path == null ? new String[] {} : path.split("/");
-		Object v = info;
-		Map m;
-		List l;
-		int i, k;
-		for (i = 0; i < ss.length; i++) {
-			if (v instanceof String) {
-				return (String) v;
-			} else if (v instanceof Map) {
-				m = (Map) v;
-				v = m.get(ss[i]);
-			} else if (v instanceof List) {
-				l = (List) v;
-				k = CommonUtil.getInt(ss[i]); // k = 0 if ss[i] is not a number
-				if (k >= 0 && k < l.size())
-					v = l.get(k);
+		String[] strArr = path == null ? new String[] {} : path.split("/");
+		Object obj = info;
+		Map map;
+		List list;
+		int i, j;
+		for (i = 0; i < strArr.length; i++) {
+			if (obj instanceof String) {
+				return (String) obj;
+			} else if (obj instanceof Map) {
+				map = (Map) obj;
+				obj = map.get(strArr[i]);
+			} else if (obj instanceof List) {
+				list = (List) obj;
+				j = Integer.parseInt(strArr[i]);
+				if (j >= 0 && j <list.size())
+					obj = list.get(j);
 			}
 		}
-		return (v == null) ? null : v.toString();
+		if (obj == null){
+			return null;
+		}else{
+			return obj.toString();
+		}
 	}
 
 	public String getContent() {
